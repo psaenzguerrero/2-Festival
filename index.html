@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Festival Arena Sound 2024</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .title-font {
+            font-family: 'Bebas Neue', sans-serif;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .lineup-day {
+            transition: all 0.3s ease;
+        }
+        
+        .lineup-day:hover {
+            transform: scale(1.05);
+        }
+        
+        .ticket-card {
+            transition: all 0.3s ease;
+        }
+        
+        .ticket-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Navbar -->
+    <nav class="fixed w-full bg-black bg-opacity-90 z-50">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="title-font text-3xl text-purple-500">ARENA SOUND</a>
+            
+            <!-- Mobile menu button -->
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8">
+                <a href="#lineup" class="hover:text-purple-400 transition">Line Up</a>
+                <a href="#tickets" class="hover:text-purple-400 transition">Tickets</a>
+                <a href="#info" class="hover:text-purple-400 transition">Info</a>
+                <a href="#galeria" class="hover:text-purple-400 transition">Galería</a>
+                <a href="#contacto" class="hover:text-purple-400 transition">Contacto</a>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-black bg-opacity-95 px-6 py-4">
+            <a href="#lineup" class="block py-2 hover:text-purple-400 transition">Line Up</a>
+            <a href="#tickets" class="block py-2 hover:text-purple-400 transition">Tickets</a>
+            <a href="#info" class="block py-2 hover:text-purple-400 transition">Info</a>
+            <a href="#galeria" class="block py-2 hover:text-purple-400 transition">Galería</a>
+            <a href="#contacto" class="block py-2 hover:text-purple-400 transition">Contacto</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero min-h-screen flex items-center justify-center pt-20">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="title-font text-6xl md:text-8xl mb-6 text-purple-500">ARENA SOUND</h1>
+            <h2 class="text-2xl md:text-4xl font-bold mb-8">Festival de Música Electrónica · 12-14 Julio 2024</h2>
+            <p class="text-xl md:text-2xl mb-12 max-w-3xl mx-auto">Vive la experiencia musical más grande del verano con los mejores DJs internacionales en un entorno único.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#tickets" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105">COMPRAR ENTRADAS</a>
+                <a href="#lineup" class="bg-transparent border-2 border-white hover:bg-white hover:text-black text-white font-bold py-4 px-8 rounded-full text-lg transition duration-300 transform hover:scale-105">VER ARTISTAS</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Countdown -->
+    <section class="bg-purple-900 py-12">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="title-font text-4xl mb-8">FALTAN</h2>
+            <div id="countdown" class="flex justify-center gap-4 md:gap-8">
+                <div class="text-center">
+                    <div class="text-4xl md:text-6xl font-bold countdown-number" id="days">00</div>
+                    <div class="text-lg">DÍAS</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-6xl font-bold countdown-number" id="hours">00</div>
+                    <div class="text-lg">HORAS</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-6xl font-bold countdown-number" id="minutes">00</div>
+                    <div class="text-lg">MINUTOS</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl md:text-6xl font-bold countdown-number" id="seconds">00</div>
+                    <div class="text-lg">SEGUNDOS</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Line Up -->
+    <section id="lineup" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="title-font text-4xl md:text-5xl text-center mb-16">LINE UP</h2>
+            
+            <div class="flex flex-col md:flex-row gap-8 mb-12">
+                <!-- Día 1 -->
+                <div class="lineup-day flex-1 bg-gray-800 rounded-lg overflow-hidden">
+                    <div class="bg-purple-600 py-4 text-center">
+                        <h3 class="title-font text-2xl">VIERNES 12</h3>
+                    </div>
+                    <ul class="divide-y divide-gray-700 artist-list">
+                        <li class="p-4 hover:bg-gray-700 transition">Martin Garrix</li>
+                        <li class="p-4 hover:bg-gray-700 transition">David Guetta</li>
+                        <li class="p-4 hover:bg-gray-700 transition">Armin van Buuren</li>
+                        <li class="p-4 hover:bg-gray-700 transition">Nervo</li>
+                        <li class="p-4 hover:bg-gray-700 transition">Vintage Culture</li>
+                    </ul>
+                </div>
+                
+                <!-- Día 2 -->
+                <div class="lineup-day flex-1 bg-gray-800 rounded-lg overflow-hidden">
+                    <div class="bg-purple-600 py-4 text-center">
+                        <h3 class="title-font text-2xl">SÁBADO 13</h3>
+                    </div>
+                    <ul class="divide-y divide-gray-700 artist-list">
+                        <li class="p-4 hover:bg-gray-700 transition">Swedish House Mafia</li>
+                        <li class="p-4 hover:bg-gray-700 transition">Calvin Harris</li>
+                        <li class="p-4 hover:bg-gray-700 transition">Amelie Lens</li>
+                        <li class="p-4 hover:bg-gray-700 transition">Charlotte de Witte</li>
+                        <li class="p-4 hover:bg-gray-700 transition">Fisher</li>
+                    </ul>
+                </div>
+                
+                <!-- Día 3 -->
+                <div class="lineup-day flex-1 bg-gray-800 rounded-lg overflow-hidden">
+                    <div class="bg-purple-600 py-4 text-center">
+                        <h3 class="title-font text-2xl">DOMINGO 14</h3>
+                    </div>
+                    <ul class="divide-y divide-gray-700 artist-list">
+                        <li class="p-4 hover:bg-gray-700 transition">Tiësto</li>
+                        <li class="p-4 hover:bg-gray-700 transition">Hardwell</li>
+                        <li class="p-4 hover:bg-gray-700 transition">Alok</li>
+                        <li class="p-4 hover:bg-gray-700 transition">Solomun</li>
+                        <li class="p-4 hover:bg-gray-700 transition">Peggy Gou</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="text-center mt-8">
+                <button id="show-more" class="bg-transparent border-2 border-purple-500 text-purple-500 hover:bg-purple-500 hover:text-white font-bold py-3 px-6 rounded-full transition duration-300">
+                    VER MÁS ARTISTAS
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tickets -->
+    <section id="tickets" class="py-20 bg-black">
+        <div class="container mx-auto px-6">
+            <h2 class="title-font text-4xl md:text-5xl text-center mb-16">ENTRADAS</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Ticket 1 Día -->
+                <div class="ticket-card bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+                    <div class="bg-purple-600 py-4 text-center">
+                        <h3 class="title-font text-2xl">1 DÍA</h3>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-4xl font-bold mb-4">€89<span class="text-lg">+ gastos</span></p>
+                        <ul class="mb-6 space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-purple-500 mt-1 mr-2"></i>
+                                <span>Acceso a todas las zonas</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-purple-500 mt-1 mr-2"></i>
+                                <span>1 día a elegir</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-purple-500 mt-1 mr-2"></i>
+                                <span>Acceso a afterparty</span>
+                            </li>
+                        </ul>
+                        <button class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-4 rounded transition duration-300">
+                            COMPRAR
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Ticket 3 Días -->
+                <div class="ticket-card bg-gray-800 rounded-lg overflow-hidden shadow-lg transform scale-105 z-10 border-2 border-purple-500">
+                    <div class="bg-gradient-to-r from-purple-500 to-pink-500 py-4 text-center">
+                        <h3 class="title-font text-2xl">3 DÍAS</h3>
+                        <p class="text-sm mt-1">MEJOR OFERTA</p>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-4xl font-bold mb-4">€199<span class="text-lg">+ gastos</span></p>
+                        <p class="text-sm text-purple-400 mb-4">Ahorra €68 respecto a comprar días sueltos</p>
+                        <ul class="mb-6 space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-purple-500 mt-1 mr-2"></i>
+                                <span>Acceso todos los días</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-purple-500 mt-1 mr-2"></i>
+                                <span>Todas las zonas</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-purple-500 mt-1 mr-2"></i>
+                                <span>Acceso a afterparties</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-purple-500 mt-1 mr-2"></i>
+                                <span>Regalo exclusivo</span>
+                            </li>
+                        </ul>
+                        <button class="w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-3 px-4 rounded transition duration-300">
+                            COMPRAR
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Ticket VIP -->
+                <div class="ticket-card bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+                    <div class="bg-purple-600 py-4 text-center">
+                        <h3 class="title-font text-2xl">VIP</h3>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-4xl font-bold mb-4">€299<span class="text-lg">+ gastos</span></p>
+                        <ul class="mb-6 space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-purple-500 mt-1 mr-2"></i>
+                                <span>Acceso todos los días</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-purple-500 mt-1 mr-2"></i>
+                                <span>Zona VIP exclusiva</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-purple-500 mt-1 mr-2"></i>
+                                <span>Barra libre</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-purple-500 mt-1 mr-2"></i>
+                                <span>Parking privado</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-purple-500 mt-1 mr-2"></i>
+                                <span>Meet & Greet con artistas</span>
+                            </li>
+                        </ul>
+                        <button class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-4 rounded transition duration-300">
+                            COMPRAR
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info -->
+    <section id="info" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="title-font text-4xl md:text-5xl text-center mb-16">INFORMACIÓN</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+                <div>
+                    <h3 class="title-font text-2xl text-purple-500 mb-4">UBICACIÓN</h3>
+                    <p class="mb-6">Parque de la Música, Valencia, España</p>
+                    <div class="aspect-w-16 aspect-h-9 bg-gray-800 rounded-lg overflow-hidden">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3079.840634188042!2d-0.3768226846340325!3d39.46956797948638!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd604f4cf0efb06f%3A0xb4a351011f7f1d38!2sParque%20de%20la%20M%C3%BAsica%2C%20Valencia!5e0!3m2!1ses!2ses!4v1620000000000!5m2!1ses!2ses" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="title-font text-2xl text-purple-500 mb-4">HORARIOS</h3>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex justify-between border-b border-gray-700 pb-2">
+                            <span>Viernes 12 Julio</span>
+                            <span>18:00 - 06:00</span>
+                        </li>
+                        <li class="flex justify-between border-b border-gray-700 pb-2">
+                            <span>Sábado 13 Julio</span>
+                            <span>16:00 - 07:00</span>
+                        </li>
+                        <li class="flex justify-between border-b border-gray-700 pb-2">
+                            <span>Domingo 14 Julio</span>
+                            <span>15:00 - 05:00</span>
+                        </li>
+                    </ul>
+                    
+                    <h3 class="title-font text-2xl text-purple-500 mb-4">TRANSPORTE</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fas fa-subway text-purple-500 mt-1 mr-2"></i>
+                            <span>Metro: Línea 5, parada Parque de la Música</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-bus text-purple-500 mt-1 mr-2"></i>
+                            <span>Autobuses especiales desde el centro</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-parking text-purple-500 mt-1 mr-2"></i>
+                            <span>Parking disponible (plazas limitadas)</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería -->
+    <section id="galeria" class="py-20 bg-black">
+        <div class="container mx-auto px-6">
+            <h2 class="title-font text-4xl md:text-5xl text-center mb-16">GALERÍA</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="gallery-item overflow-hidden rounded-lg cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Festival Arena Sound" class="w-full h-64 object-cover transition duration-500 hover:scale-110">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Festival Arena Sound" class="w-full h-64 object-cover transition duration-500 hover:scale-110">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Festival Arena Sound" class="w-full h-64 object-cover transition duration-500 hover:scale-110">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1496293455970-f8581aae0e3b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2013&q=80" alt="Festival Arena Sound" class="w-full h-64 object-cover transition duration-500 hover:scale-110">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1472653431158-6364773b2a56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Festival Arena Sound" class="w-full h-64 object-cover transition duration-500 hover:scale-110">
+                </div>
+                <div class="gallery-item overflow-hidden rounded-lg cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1464375117522-1311d6a5b81f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Festival Arena Sound" class="w-full h-64 object-cover transition duration-500 hover:scale-110">
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-full transition duration-300">
+                    VER MÁS FOTOS
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-16 bg-gradient-to-r from-purple-900 to-purple-700">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="title-font text-3xl md:text-4xl mb-6">NO TE PIERDAS LAS NOVEDADES</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Suscríbete a nuestro newsletter y recibe información exclusiva, sorteos y descuentos especiales.</p>
+            
+            <form class="max-w-md mx-auto flex flex-col sm:flex-row gap-4">
+                <input type="email" placeholder="Tu email" class="flex-grow px-4 py-3 rounded-full text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                <button type="submit" class="bg-black hover:bg-gray-900 text-white font-bold py-3 px-6 rounded-full transition duration-300">
+                    SUSCRIBIRME
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="title-font text-4xl md:text-5xl text-center mb-16">CONTACTO</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+                <div>
+                    <h3 class="title-font text-2xl text-purple-500 mb-6">CONTÁCTANOS</h3>
+                    <form class="space-y-4">
+                        <div>
+                            <input type="text" placeholder="Nombre" class="w-full px-4 py-3 bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        </div>
+                        <div>
+                            <input type="email" placeholder="Email" class="w-full px-4 py-3 bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        </div>
+                        <div>
+                            <textarea placeholder="Mensaje" rows="5" class="w-full px-4 py-3 bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"></textarea>
+                        </div>
+                        <button type="submit" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+                            ENVIAR MENSAJE
+                        </button>
+                    </form>
+                </div>
+                
+                <div>
+                    <h3 class="title-font text-2xl text-purple-500 mb-6">REDES SOCIALES</h3>
+                    <div class="space-y-4 mb-8">
+                        <a href="#" class="flex items-center text-white hover:text-purple-400 transition">
+                            <i class="fab fa-instagram text-2xl mr-4"></i>
+                            <span class="text-lg">@arenasoundfest</span>
+                        </a>
+                        <a href="#" class="flex items-center text-white hover:text-purple-400 transition">
+                            <i class="fab fa-facebook text-2xl mr-4"></i>
+                            <span class="text-lg">Arena Sound Festival</span>
+                        </a>
+                        <a href="#" class="flex items-center text-white hover:text-purple-400 transition">
+                            <i class="fab fa-twitter text-2xl mr-4"></i>
+                            <span class="text-lg">@ArenaSoundFest</span>
+                        </a>
+                        <a href="#" class="flex items-center text-white hover:text-purple-400 transition">
+                            <i class="fab fa-tiktok text-2xl mr-4"></i>
+                            <span class="text-lg">@arenasound</span>
+                        </a>
+                    </div>
+                    
+                    <h3 class="title-font text-2xl text-purple-500 mb-6">PATROCINADORES</h3>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="bg-gray-800 p-4 flex items-center justify-center rounded-lg h-20">
+                            <span class="font-bold">RED BULL</span>
+                        </div>
+                        <div class="bg-gray-800 p-4 flex items-center justify-center rounded-lg h-20">
+                            <span class="font-bold">HEINEKEN</span>
+                        </div>
+                        <div class="bg-gray-800 p-4 flex items-center justify-center rounded-lg h-20">
+                            <span class="font-bold">BEATS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="#" class="title-font text-3xl text-purple-500">ARENA SOUND</a>
+                    <p class="mt-2 text-gray-400">El festival de música electrónica más grande del verano</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-instagram text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-facebook text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-twitter text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-tiktok text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-youtube text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-spotify text-2xl"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2024 Arena Sound Festival. Todos los derechos reservados.</p>
+                
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition">Términos y condiciones</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition">Política de privacidad</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+        
+        // Countdown timer
+        function updateCountdown() {
+            const festivalDate = new Date('July 12, 2024 18:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = festivalDate - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById('countdown').innerHTML = '<div class="text-4xl">¡EL FESTIVAL HA COMENZADO!</div>';
+            }
+        }
+        
+        updateCountdown();
+        const countdownInterval = setInterval(updateCountdown, 1000);
+        
+        // Show more artists functionality
+        const showMoreBtn = document.getElementById('show-more');
+        const artistLists = document.querySelectorAll('.artist-list');
+        
+        showMoreBtn.addEventListener('click', () => {
+            artistLists.forEach(list => {
+                const hiddenArtists = [
+                    'Adam Beyer',
+                    'Maceo Plex',
+                    'Dixon',
+                    'Jamie Jones',
+                    'The Martinez Brothers'
+                ];
+                
+                hiddenArtists.forEach(artist => {
+                    const li = document.createElement('li');
+                    li.className = 'p-4 hover:bg-gray-700 transition';
+                    li.textContent = artist;
+                    list.appendChild(li);
+                });
+            });
+            
+            showMoreBtn.textContent = '¡MÁS ARTISTAS PRÓXIMAMENTE!';
+            showMoreBtn.disabled = true;
+        });
+        
+        // Ticket buttons functionality
+        document.querySelectorAll('.ticket-card button').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                alert('Redirigiendo a la plataforma de venta de entradas...');
+                // In a real implementation, this would redirect to the ticket purchase page
+            });
+        });
+        
+        // Newsletter form
+        const newsletterForm = document.querySelector('form');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const email = newsletterForm.querySelector('input[type="email"]').value;
+                alert(`¡Gracias por suscribirte con ${email}! Pronto recibirás nuestras novedades.`);
+                newsletterForm.reset();
+            });
+        }
+        
+        // Contact form
+        const contactForm = document.querySelector('#contacto form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Gracias por tu mensaje. Nos pondremos en contacto contigo pronto.');
+                contactForm.reset();
+            });
+        }
+    </script>
+</body>
+</html>
